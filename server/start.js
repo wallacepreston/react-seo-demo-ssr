@@ -1,3 +1,9 @@
+require('@babel/core')
+require('@babel/polyfill')
+require('@babel/preset-env')
+require('@babel/preset-react')
+require('@babel/register')
+
 // const {db} = require('./db');
 const app = require('./app');
 const port = process.env.PORT || 4000;

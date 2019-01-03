@@ -9,15 +9,19 @@
     "start-server-deploy": "node server/start.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run start-server-deploy",
-    "build": "webpack",
+    "build": "npm run pack && npm run babel-version src -d views",
     "build-watch": "webpack -w",
     "start-server": "nodemon server/start.js --ignore public",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "babel-cli": "babel-cli src -d views",
+    "babel-version": "babel --version",
+    "pack": "webpack --config webpack.config.js"
   },
   "author": "Preston Wallace",
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
+    "@babel/register": "^7.0.0",
     "axios": "^0.18.0",
     "connect-session-sequelize": "^6.0.0",
     "express": "^4.16.4",

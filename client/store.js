@@ -5,13 +5,15 @@ import loggerMiddleware from 'redux-logger' // https://github.com/evgenyrodionov
 import thunkMiddleware from 'redux-thunk' // https://github.com/gaearon/redux-thunk
 
 // WITH ADVANCED REDUX DEV TOOLS
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-  reducer, /* preloadedState, */
-  composeEnhancers(
-    applyMiddleware(thunkMiddleware.withExtraArgument({axios}),
-    loggerMiddleware)
-  )
-)
-
-export default store
+const composeEnhancers = compose || window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+const configureStore = function(preloadedState) {
+    return createStore(
+      reducer,
+      preloadedState,
+      composeEnhancers(
+        applyMiddleware(thunkMiddleware.withExtraArgument({axios}),
+        loggerMiddleware)
+      )
+    )
+  }
+export default configureStore
