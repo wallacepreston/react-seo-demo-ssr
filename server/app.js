@@ -22,7 +22,7 @@ let initialState = {
 const ssr = require('../views/server');
 
 // server rendered home page
-app.get('/*', (req, res) => {
+app.get('*', (req, res) => {
   const { preloadedState, content}  = ssr(initialState, req.url)
   const response = template('Server Rendered Page', preloadedState, content)
   res.setHeader('Cache-Control', 'assets, max-age=604800')
