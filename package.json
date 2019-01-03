@@ -20,6 +20,7 @@
   "author": "Preston Wallace",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.2.2",
     "@babel/cli": "^7.2.3",
     "@babel/polyfill": "^7.2.5",
     "@babel/register": "^7.0.0",
@@ -45,7 +46,6 @@
     "webpack": "^4.28.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
