@@ -15,13 +15,14 @@
     "heroku-postbuild": "npm run build",
     "babel": "babel --watch client -d views",
     "babel-production": "babel client -d views",
-    "pack": "webpack --config webpack.config.js"
+    "pack": "webpack --config webpack.config.js",
+    "sitemap-builder": "node ./sitemap-builder.js"
   },
   "author": "Preston Wallace",
   "license": "ISC",
   "dependencies": {
-    "@babel/core": "^7.2.2",
     "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-react": "^7.0.0",
@@ -41,6 +42,7 @@
     "react-helmet": "^5.2.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
+    "react-router-sitemap": "^1.1.5",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
