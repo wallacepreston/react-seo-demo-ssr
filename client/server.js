@@ -9,8 +9,8 @@ module.exports = function (initialState, url = '/') {
   // Model the initial state
   const store = configureStore(initialState)
   let content = renderToString(
-    <Provider location={url} store={store} >
-      <StaticRouter context ={{}}>
+    <Provider store={store} >
+      <StaticRouter location={url} context ={{}}>
         <Root />
       </StaticRouter>
     </Provider>
