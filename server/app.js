@@ -32,7 +32,7 @@ app.get('/*', (req, res) => {
 // tiny trick to stop server during local development
 
   app.get('/exit', (req, res) => {
-    if(process.env.PORT) {
+    if (process.env.PORT) {
       res.send('Sorry, the server denies your request')
     } else {
       res.send('shutting down')
