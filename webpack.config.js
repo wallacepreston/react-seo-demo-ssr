@@ -1,13 +1,6 @@
-module.exports = {
-  entry: {
-    client: './src/client.js',
-    bundle: './src/bundle.js'
-  },
+const path = require('path')
+const commonConfig = {
   mode: 'development',
-  output: {
-    path: __dirname,
-    filename: '[name].js'
-  },
   devtool: 'source-maps',
   module: {
     rules: [
@@ -28,3 +21,16 @@ module.exports = {
     ]
   }
 }
+
+const clientConfig = {
+  ...commonConfig,
+  name: 'client',
+  entry: path.join(__dirname, 'client'),
+  output: {
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js'
+  }
+}
+
+
+module.exports = clientConfig

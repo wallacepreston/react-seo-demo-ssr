@@ -1,19 +1,10 @@
-function template(title, initialState = {}, content = ""){
-  let scripts = '';
-  if(content){
-    scripts = ` <script>
-                   window.__STATE__ = ${JSON.stringify(initialState)}
-                </script>
-                <script src="client.js"></script>
-                `
-  } else {
-    scripts = ` <script src="bundle.js"> </script> `
-  }
+function template(title, initialState = {}, content = ""){  
   let page = `<!DOCTYPE html>
               <html lang="en">
               <head>
                 <meta charset="utf-8">
                 <title> ${title} </title>
+                <link rel="stylesheet" href="/index.css">
               </head>
               <body>
                 <div class="content">
@@ -21,7 +12,10 @@ function template(title, initialState = {}, content = ""){
                       <!--- magic happens here -->  ${content}
                    </div>
                 </div>
-                  ${scripts}
+                <script>
+                   window.__STATE__ = ${JSON.stringify(initialState)}
+                </script>
+                <script src="/bundle.js"></script>
               </body>
               </html>
               `;

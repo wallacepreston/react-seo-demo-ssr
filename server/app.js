@@ -2,8 +2,6 @@ const express = require('express');
 const app = express();
 const path = require('path')
 const morgan = require('morgan');
-const { renderToString } = require('react-dom/server');
-const Root = require('../client/components/root');
 const template = require('./template')
 
 // MIDDLEWARE
@@ -21,19 +19,12 @@ let initialState = {
 }
 
 //SSR function import
-const ssr = require('./server');
+const ssr = require('../views/server');
 
 // server rendered home page
-app.get('/', (req, res) => {
-  const { preloadedState, content}  = ssr(initialState)
-  const response = template("Server Rendered Page", preloadedState, content)
-  res.setHeader('Cache-Control', 'assets, max-age=604800')
-  res.send(response);
-});
-
-// Pure client side rendered page
-app.get('/client', (req, res) => {
-  let response = template('Client Side Rendered page')
+app.get('/*', (req, res) => {
+  const { preloadedState, content}  = ssr(initialState, req.url)
+  const response = template('Server Rendered Page', preloadedState, content)
   res.setHeader('Cache-Control', 'assets, max-age=604800')
   res.send(response);
 });
@@ -42,15 +33,13 @@ app.get('/client', (req, res) => {
 
   app.get('/exit', (req, res) => {
     if(process.env.PORT) {
-      res.send("Sorry, the server denies your request")
+      res.send('Sorry, the server denies your request')
     } else {
-      res.send("shutting down")
+      res.send('shutting down')
       process.exit(0)
     }
 
   });
-
-
 
 function htmlTemplate( reactDom ) {
   return `
