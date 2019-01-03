@@ -9,7 +9,7 @@
     "start-server-deploy": "node server/start.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run start-server-deploy",
-    "build": "npm run pack && npm run babel",
+    "build": "webpack",
     "build-watch": "webpack -w & npm run babel",
     "start-server": "nodemon server/start.js --ignore public",
     "heroku-postbuild": "npm run build",
