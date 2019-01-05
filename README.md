@@ -1,5 +1,7 @@
 # React SEO Demo App
 
+A simple Isomorphic React App
+
 A skeleton of a web app used to demonstrate how Google fetches certain implementations of React.
 
 ## Getting started
