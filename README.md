@@ -15,9 +15,13 @@ https://github.com/wallacepreston/react-seo-demo
 
 Build out your app to your liking!
 
-Stack used:
+Main Stack used:
 - Node.js
 - Express
 - React
 - Redux
 - React-Redux
+
+Packages Specific to SEO
+- React-Router
+- React-Helmet
